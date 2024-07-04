@@ -34,6 +34,7 @@ body::before {
 }
 
 @media screen and (max-width: 600px) {
+  /* For Smaller Devices */
   .todolist-container {
     margin: 50px 15px;
   }
