@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./index.css";
 
-const TaskInput = (props) => {
-  const { onAdd } = props; // Destructure onAdd function from props
+const TaskInput = ({ onAdd }) => {
+  // const { onAdd } = props; // Destructure onAdd function from props
   const [taskName, setTaskName] = useState(""); // State to hold the input value
 
   // Handle form submission

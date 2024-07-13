@@ -11,14 +11,16 @@ function App() {
   });
 
   // Sync tasks to localStorage whenever tasks change
+
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
 
   // Function to add a new task
+
   function addTask(name) {
     if (name.trim() === "") {
-      return; // Do not add a task if the name is an empty string
+      return;
     }
     setTasks((prev) => [...prev, { name: name, done: false }]);
   }
@@ -29,12 +31,20 @@ function App() {
       prev.filter((taskObject, index) => index !== indexToRemove)
     );
   }
-
   // Function to update the 'done' status of a task
   function updateTaskDone(taskIndex, newDone) {
     setTasks((prev) => {
       const newTasks = [...prev];
       newTasks[taskIndex].done = newDone;
+      return newTasks;
+    });
+  }
+
+  // Function to rename a task by index
+  function renameTask(index, newName) {
+    setTasks((prev) => {
+      const newTasks = [...prev];
+      newTasks[index].name = newName;
       return newTasks;
     });
   }
@@ -54,15 +64,6 @@ function App() {
       return "Nice job for today! 🏝";
     }
     return "Keep it going 💪🏻";
-  }
-
-  // Function to rename a task by index
-  function renameTask(index, newName) {
-    setTasks((prev) => {
-      const newTasks = [...prev];
-      newTasks[index].name = newName;
-      return newTasks;
-    });
   }
 
   return (
